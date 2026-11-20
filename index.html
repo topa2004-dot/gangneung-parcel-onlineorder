@@ -95,16 +95,15 @@ button.secondary{display:block;width:100%;padding:13px;border:1px solid var(--li
   <div class="summary-row discount-row"><span>묶음 할인</span><strong id="discount">0원</strong></div>
   <div class="summary-row"><span>택배비</span><strong id="shipping">0원</strong></div>
   <div class="summary-row total"><span>보내실 금액</span><strong id="total">0원</strong></div>
-  <p class="small">택배비 4,000원 · 묶음 할인은 강릉샌드와 강원옥 찹쌀떡 합계 2박스부터 적용돼요.</p>
+  <div class="bank"><div>입금 계좌</div><strong>신한은행 110-243-851110</strong><br>예금주: 홍**<p class="small">택배비 4,000원 별도 · 묶음 할인은 강릉샌드와 강원옥 찹쌀떡 합계 2박스부터 적용돼요.</p></div>
 </section>
 
 <section>
   <h2>05. 주문 문자 만들기</h2>
-  <p class="small">아래 버튼을 눌러야 문자 앱이 열립니다. 주문 내용과 금액이 문자에 자동으로 입력됩니다. 내용을 확인한 뒤 직접 전송해 주세요.</p>
+  <p class="small">아래 버튼을 눌러야 문자 앱이 열립니다. 주문 내용과 금액이 문자에 자동으로 입력되며, 내용을 확인한 뒤 직접 전송해 주세요.</p>
   <button type="button" class="primary" id="smsBtn">주문 문자 작성하기</button>
   <button type="button" class="secondary" id="copyBtn">주문 내용 복사하기</button>
   <div id="status" role="status"></div>
-  <p class="note">문자 전송을 완료한 뒤 직원에게 전송된 메시지를 보여주시고, 주문 내용 확인을 요청해 주세요.</p>
   <p class="note">문자 수신 번호: 010-4868-0599</p>
 </section>
 </main>
@@ -162,7 +161,7 @@ function orderText(){
     `상품 금액(할인 적용 후): ${won(t.subtotal)}`,
     `묶음 할인: ${t.discount ? "-"+won(t.discount) : "0원"}`,
     `택배비: ${won(t.shipping)}`,
-    `주문 총액: ${won(t.total)}`,
+    `총 입금 금액: ${won(t.total)}`,
     "",
     "[보내는 분]",
     `이름: ${document.getElementById("senderName").value.trim()}`,
@@ -173,7 +172,10 @@ function orderText(){
     `연락처: ${document.getElementById("recipientPhone").value.trim()}`,
     `주소: ${document.getElementById("address").value.trim()}`,
     `배송 요청사항: ${document.getElementById("memo").value.trim() || "없음"}`,
-    ""
+    "",
+    "[입금 계좌]",
+    "신한은행 110-243-851110",
+    "예금주: 홍**"
   ];
   return lines.join("\n");
 }
